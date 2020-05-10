@@ -1,0 +1,14 @@
+{
+  "name": "notes-taking-app",
+  "version": "1.0.0",
+  "description": "Notes can be add, edit, delete, and list",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Shashwat Prakash",
+  "license": "MIT",
+  "dependencies": {
+    "yargs": "^12.0.2"
+  }
+}
