@@ -11,17 +11,22 @@ yargs.command({
     title: {
       describe: "Note Title",
       demandOption: true,
-      type: "string"
+      type: "string",
     },
     body: {
       describe: "Note Body",
       demandOption: true,
-      type: "string"
-    }
+      type: "string",
+    },
+    date: {
+      describe: "Note Date",
+      demandOption: false,
+      type: "string",
+    },
   },
-  handler: function(argv) {
+  handler: function (argv) {
     notes.addNote(argv.title, argv.body);
-  }
+  },
 });
 
 yargs.command({
@@ -31,12 +36,12 @@ yargs.command({
     title: {
       describe: "Note title",
       demandOption: true,
-      type: "string"
-    }
+      type: "string",
+    },
   },
-  handler: function(argv) {
+  handler: function (argv) {
     notes.removeNote(argv.title);
-  }
+  },
 });
 
 yargs.command({
@@ -46,20 +51,20 @@ yargs.command({
     title: {
       describe: "Note title",
       demandOption: true,
-      type: "string"
-    }
+      type: "string",
+    },
   },
-  handler: function(argv) {
+  handler: function (argv) {
     notes.readNote(argv.title);
-  }
+  },
 });
 
 yargs.command({
   command: "list",
   describe: "List all Notes...",
-  handler: function() {
+  handler: function () {
     notes.listNotes();
-  }
+  },
 });
 
 yargs.parse();

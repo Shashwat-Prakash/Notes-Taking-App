@@ -1,16 +1,18 @@
 const fs = require("fs");
 
 // Adding a new Note to notes.json file
-const addNote = function(title, body) {
+const addNote = function (title, body) {
   const notes = loadNotes();
-  const duplicateNote = notes.filter(function(note) {
+  const createdDate = new Date().toLocaleString();
+  const duplicateNote = notes.filter(function (note) {
     return note.title === title;
   });
 
   if (duplicateNote.length === 0) {
     notes.push({
       title: title,
-      body: body
+      body: body,
+      date: createdDate,
     });
     saveNote(notes);
     console.log("Notes added succesfully!");
@@ -18,7 +20,7 @@ const addNote = function(title, body) {
 };
 
 //Load all notes available in notes.json
-const loadNotes = function() {
+const loadNotes = function () {
   try {
     const dataFetch = fs.readFileSync("notes.json");
     const dataFetchToString = dataFetch.toString();
@@ -29,15 +31,15 @@ const loadNotes = function() {
 };
 
 //Save new notes to notes.json file
-const saveNote = function(notes) {
+const saveNote = function (notes) {
   const dataJSON = JSON.stringify(notes);
   fs.writeFileSync("notes.json", dataJSON);
 };
 
 //Remove a note from notes.json file
-const removeNote = function(title) {
+const removeNote = function (title) {
   const notes = loadNotes();
-  const keepNotes = notes.filter(function(note) {
+  const keepNotes = notes.filter(function (note) {
     return note.title !== title;
   });
 
@@ -51,20 +53,20 @@ const removeNote = function(title) {
 const listNotes = () => {
   const dataFetch = loadNotes();
   console.log("Your Notes Title");
-  dataFetch.forEach(note => {
+  dataFetch.forEach((note) => {
     return console.log(note.title);
   });
 };
 
 //Read a note from notes.json file
-const readNote = title => {
+const readNote = (title) => {
   const dataFetch = loadNotes();
   //   const dataToRead = dataFetch.filter(note => {
   //     if (note.title === title) {
   //       return console.log(note.body);
   //     }
   //   });
-  const dataToRead = dataFetch.find(note => {
+  const dataToRead = dataFetch.find((note) => {
     return note.title === title;
   });
 
@@ -80,5 +82,5 @@ module.exports = {
   addNote: addNote,
   removeNote: removeNote,
   listNotes: listNotes,
-  readNote: readNote
+  readNote: readNote,
 };

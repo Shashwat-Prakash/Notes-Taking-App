@@ -1,4 +1,6 @@
 [
   { "title": "Title3", "body": "Title3 body is displaying now" },
-  { "title": "Title4", "body": "Title4 body is displaying now" }
+  { "title": "Title4", "body": "Title4 body is displaying now" },
+  { "title": "Title5", "body": "Title5 body", "date": null },
+  { "title": "Title6", "body": "Title6 body", "date": "5/12/2020, 10:58:49 AM" }
 ]
